@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Nutritionnel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Section -->
+    <div id="login-section">
+        <div class="container">
+            <h2>Connexion</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+                <input type="password" id="password" placeholder="Mot de passe" required>
+                <button type="submit">Se connecter</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard" style="display:none;">
+        <nav>
+            <div class="logo">Site Nutritionnel</div>
+            <div class="user-info">
+                <span id="user-name"></span>
+                <button id="logout-btn">Déconnexion</button>
+            </div>
+        </nav>
+
+        <!-- Admin Section -->
+        <div id="admin-section" class="dashboard-section" style="display:none;">
+            <h2>Administration</h2>
+            <div class="admin-controls">
+                <button onclick="showUserManagement()">Gestion des Utilisateurs</button>
+                <button onclick="showPatientManagement()">Gestion des Patients</button>
+            </div>
+        </div>
+
+        <!-- Dietitian Section -->
+        <div id="dietitian-section" class="dashboard-section" style="display:none;">
+            <h2>Espace Diététicien</h2>
+            <div class="calendar-section">
+                <h3>Calendrier des Rendez-vous</h3>
+                <div id="appointments-calendar"></div>
+            </div>
+            <div class="patient-section">
+                <h3>Dossiers Patients</h3>
+                <div id="patient-list"></div>
+            </div>
+        </div>
+
+        <!-- Patient Form -->
+        <div id="patient-form-section" style="display:none;">
+            <h3>Informations Patient</h3>
+            <form id="patient-form">
+                <input type="text" name="name" placeholder="Nom complet">
+                <input type="number" name="age" placeholder="Âge">
+                <select name="sex">
+                    <option value="">Sélectionner le sexe</option>
+                    <option value="M">Masculin</option>
+                    <option value="F">Féminin</option>
+                </select>
+                <input type="tel" name="phone" placeholder="Téléphone">
+                <input type="number" name="weight" placeholder="Poids (kg)">
+                <input type="number" name="height" placeholder="Taille (cm)">
+                <button type="submit">Enregistrer</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
