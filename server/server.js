@@ -212,6 +212,23 @@ app.get('/api/appointments', authenticateToken, (req, res) => {
     });
 });
 
+app.delete('/api/appointments/:id', authenticateToken, (req, res) => {
+    const appointmentId = req.params.id;
+    const dietitianId = req.user.id;
+
+    db.run('DELETE FROM appointments WHERE id = ? AND dietitian_id = ?', 
+        [appointmentId, dietitianId], 
+        function(err) {
+            if (err) {
+                return res.status(500).json({ success: false, message: 'Erreur lors de la suppression du rendez-vous' });
+            }
+            if (this.changes === 0) {
+                return res.status(404).json({ success: false, message: 'Rendez-vous non trouvé' });
+            }
+            res.json({ success: true });
+        });
+});
+
 // Token verification route
 app.get('/api/auth/verify', authenticateToken, (req, res) => {
     res.json({ 
